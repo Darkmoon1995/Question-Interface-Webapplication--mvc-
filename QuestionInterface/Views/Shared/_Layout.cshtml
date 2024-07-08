@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Your Application Name</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    <script defer src="~/js/main.js"></script>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="#">Your Application</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link1" href="#"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <div class="popupAddQuestion">
+        <div class="popupAddQuestion-context">
+            <label for="fname">Number1:</label>
+            <select name="Number1" id="QuestionInterfaceSelctor" >
+                <option value="one">1</option>
+                <option value="two">2</option>
+                <option value="three">3</option>
+                <option value="four">4</option>
+                <option value="five">5</option>
+                <option value="six">6</option>
+                <option value="seven">7</option>
+                <option value="eight">8</option>
+                <option value="nine">9</option>
+                <option value="ten">10</option>
+            </select>
+            <hr />
+            <label for="fname">Number2:</label>
+            <select name="Number2" id="QuestionInterfaceSelctor" >
+                <option value="2one">1</option>
+                <option value="2two">2</option>
+                <option value="2three">3</option>
+                <option value="2four">4</option>
+                <option value="2five">5</option>
+                <option value="2six">6</option>
+                <option value="2seven">7</option>
+                <option value="2eight">8</option>
+                <option value="2nine">9</option>
+                <option value="2ten">10</option>
+
+            </select>
+            <hr />
+            <label for="fname">Operation:</label>
+            <select name="Skills" id="QuestionInterfaceSelctor" >
+                <option value="Addition">Addition</option>
+                <option value="Substreation">Substreation</option>
+                <option value="Divition">Divition</option>
+                <option value="multiplication">multiplication</option>
+            </select>
+            <hr />
+            <button onclick="addNewQuestion()" id="SaveAddingNewQuestion" class="QuestionInteface">Save</button>
+            <button class="QuestionInteface" id="cancel">Cancel</button>
+
+        </div>
+    </div>
+    @RenderSection("Scripts", required: false)
+    <script defer src="~/js/main.js"></script>
+</body>
+</html>

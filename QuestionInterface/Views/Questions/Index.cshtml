@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div class="SameRow">
+        <h3>WorkSheet ID</h3>
+        <p1>
+            <button class="QuestionInteface">Save</button>
+            <button class="QuestionInteface">remove</button>
+        </p1>
+    </div>
+    <form >
+        <label for="fname">Title:</label>
+        <input type="text" id="fname" name="fname"><br><br>
+    </form>
+    <div class="SameRow">
+        <p1>
+            <select name="Topics" id="QuestionInterfaceSelctor">
+                <option value="A">Topics</option>
+                <option value="B">B</option>
+                <option value="-">Other</option>
+            </select>
+            <select name="Skills" id="QuestionInterfaceSelctor" +>
+                <option value="A">SKILL</option>
+                <option value="B">B</option>
+                <option value="-">Other</option>
+            </select>
+        </p1>
+        <select name="Type" id="QuestionInterfaceSelctor">
+            <option value="A">TYPE</option>
+            <option value="B">B</option>
+            <option value="-">Other</option>
+        </select>
+    </div>
+    <br />
+    <h3>Questions</h3>
+
+    <hr />
+    <div name="MainQuestionDivName">
+        <div class="number-box" name="1div">
+            <p1 class="p1BoarderBlack">1</p1>
+            <p1 class="p1BoarderBlack">3 ^ 5</p1>
+            
+                <IMG src="~/gif/icons8-settings.gif" id="SmallerImage">.
+            
+            <button class="QuestionInteface" id="RedColor">Remove</button>
+
+        </div>
+        <div class="number-box" name="2div">
+            <p1 class="p1BoarderBlack">2</p1>
+            <p1 class="p1BoarderBlack">3 + 5</p1>
+            <IMG src="~/gif/icons8-settings.gif" id="SmallerImage">.
+            <button class="QuestionInteface" id="RedColor">Remove</button>
+
+        </div>
+        <div class="number-box" name="3div">
+            <p1 class="p1BoarderBlack">3</p1>
+            <p1 class="p1BoarderBlack">3 x 5</p1>
+            <IMG src="~/gif/icons8-settings.gif" id="SmallerImage">.
+            <button class="QuestionInteface" id="RedColor">Remove</button>
+        </div>
+
+    </div>
+    <button class="QuestionInteface" id="AddQuestionInterface" >Add</button>
+
+</div>
+
