@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/site.css">
     <!-- Include jQuery from a CDN -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpHwrPbpk9l5lH0DdKJpXM/Sfgo+d1/D3PfrP9rSO8K/4TFsVCKb1b7z" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script defer src="~/js/main.js"></script>
 </head>
 <body>
@@ -48,12 +48,16 @@
 
             <hr />
             <label for="Operation">Operation:</label>
-            <select name="Skills" id="QuestionInterfaceSelctorOperation">
+            <select name="Skills" id="QuestionInterfaceSelctorOperation" class="QuestionInterfaceSelctor">
                 <option value="+">Addition</option>
                 <option value="-">Subtraction</option>
                 <option value="%">Division</option>
                 <option value="*">Multiplication</option>
             </select>
+
+            <hr />
+            <label for="fname">Time For Question(seconds):</label>
+            <input type="text" id="Sct" name="fname"><br><br>
             <hr />
             <button onclick="addNewQuestion()" id="SaveAddingNewQuestion" class="QuestionInteface">Save</button>
             <button class="QuestionInteface" id="cancel">Cancel</button>

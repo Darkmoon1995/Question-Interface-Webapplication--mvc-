@@ -20,17 +20,17 @@ function addNewQuestion() {
     document.querySelector(".popupAddQuestion").style.display = "none";
     let number1 = document.getElementById("Number1").value;
     let number2 = document.getElementById("Number2").value;
-    if (number1 == "" && number2 == "") {
+    let sct = document.getElementById("Sct").value;
+    if (number1 === "" || number2 === "" || sct === "") {
         alert("Please provide valid inputs.");
         return;
     }
     QuestionCounter++;
 
-    var selectedOperation = document.getElementById('QuestionInterfaceSelctorOperation').value;
+    const selectedOperation = document.getElementById('QuestionInterfaceSelctorOperation').value;
 
     const mainDiv = document.createElement("div");
     mainDiv.className = "number-box";
-    mainDiv.setAttribute("name", "4Dive");
     mainDiv.style.display = "flex";
     mainDiv.style.flexDirection = "row";
 
@@ -43,6 +43,10 @@ function addNewQuestion() {
     pElement2.className = "p1BoarderBlack";
     pElement2.textContent = number1 + " " + selectedOperation + " " + number2;
 
+    const pElement3 = document.createElement("p");
+    pElement3.className = "p1BoarderBlack";
+    pElement3.textContent = "In " +sct +" Seconds" ;
+
     const imgElement = document.createElement("img");
     imgElement.src = "/gif/icons8-settings.gif";
     imgElement.id = "SmallerImage";
@@ -53,6 +57,8 @@ function addNewQuestion() {
 
         document.getElementById("Number1").value = num1;
         document.getElementById("Number2").value = num2;
+        document.getElementById('QuestionInterfaceSelctorOperation').value = sct;
+
         document.querySelector(".popupAddQuestion").style.display = "flex";
     });
 
@@ -77,11 +83,19 @@ function addNewQuestion() {
 
     questions.push({
         order: QuestionCounter,
-        title: number1 + " " + selectedOperation + " " + number2,
-        number1: parseInt(number1),
-        number2: parseInt(number2),
-        operation: selectedOperation,
-        numberOfOptions: 4,
+        title: {
+            text: number1 + " " + selectedOperation + " " + number2,
+            config: {
+                style: "cheerful", 
+                styledegree: "1"  // Default value
+            }
+        },
+        settings: {
+            number1: parseInt(number1),
+            number2: parseInt(number2),
+            operation: selectedOperation
+        },
+        numberOfOptions: 4, 
         sct: 5
     });
 
@@ -96,36 +110,40 @@ function addNewQuestion() {
     mainDiv.appendChild(createSpacer());
     mainDiv.appendChild(pElement2);
     mainDiv.appendChild(createSpacer());
+    mainDiv.appendChild(pElement3);
+    mainDiv.appendChild(createSpacer());
     mainDiv.appendChild(imgElement);
     mainDiv.appendChild(createSpacer());
     mainDiv.appendChild(buttonElement);
+
 
     document.getElementById("MainQuestionDivName").appendChild(mainDiv);
 
     document.getElementById("Number1").value = "";
     document.getElementById("Number2").value = "";
+    document.getElementById("Sct").value = "" ; 
 }
 
 function saveData() {
     const formData = {
-        skillId: 100,
-        number: 1,
-        level: 1,
+        skillId: 100,         // Example static value
+        number: 1,            // Example static value
+        level: 1,             // Example static value
         title: {
             text: document.getElementById("Title").value,
             config: {
-                style: "friendly",
-                styledegree: "1"
+                style: "friendly",     // Example static value
+                styledegree: "1"       // Example static value
             }
         },
         finalMessage: {
             text: document.getElementById("FinalMessge").value,
             config: {
-                style: "excited",
-                styledegree: "2"
+                style: "excited",      // Example static value
+                styledegree: "2"       // Example static value
             }
         },
-        worksheetType: "MathOperation2NumRow",
+        worksheetType: "MathOperation2NumRow",  // Example static value
         qus: questions
     };
 
