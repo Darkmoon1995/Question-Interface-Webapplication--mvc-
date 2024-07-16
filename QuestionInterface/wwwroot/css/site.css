@@ -153,11 +153,17 @@ li a {
     width:40px;
     height:40px
 }
-#fname{
-    margin:10px;
+#FinalMessge {
+    margin: 10px;
     padding: 5px;
     width: 70%;
-    height:40px;
+    height: 40px;
+}
+#Title {
+    margin: 10px;
+    padding: 5px;
+    width: 70%;
+    height: 40px;
 }
 #QuestionInterfaceSelctor{
     width:6cm;
@@ -175,7 +181,7 @@ li a {
     align-self: center;
 }
 .popupAddQuestion-context {
-    height: 300px;
+    height: 350px;
     width: 500px;
     background: white;
     justify-content: center;
