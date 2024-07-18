@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Worksheet List";
+}
+
+<h1>Worksheet List</h1>
+
+<div id="worksheetContainer">
+    <!-- Buttons will be dynamically inserted here by JavaScript -->
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('/Worksheet/GetWorksheets')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('worksheetContainer');
+                data.forEach(worksheet => {
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.id = 'backgroundcolor1';
+                    button.className = 'MainButtonMenu';
+                    button.innerHTML = `
+                            <span class="aboveText" style="font-size: 1.6rem;">${worksheet.WorksheetId}</span>
+                            <br>
+                            <span class="text-nowrap" style="font-size: 1rem;">${worksheet.Qus.length}</span>
+                        `;
+                    button.onclick = () => goToWorksheetPage(worksheet.WorksheetId);
+                    container.appendChild(button);
+                });
+            })
+            .catch(error => console.error('Error fetching worksheets:', error));
+    });
+
+    function goToWorksheetPage(id) {
+        window.location.href = '/Worksheet/Details/' + id;
+    }
+</script>

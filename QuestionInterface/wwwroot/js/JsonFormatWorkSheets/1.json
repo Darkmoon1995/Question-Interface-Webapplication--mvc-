@@ -1,0 +1,40 @@
+{
+  "WorksheetId": 1,
+  "SkillId": 100,
+  "Number": 1,
+  "Level": 1,
+  "Title": {
+    "Text": "Title",
+    "Config": {
+      "Style": "friendly",
+      "Styledegree": "1"
+    }
+  },
+  "FinalMessage": {
+    "Text": "Final Message",
+    "Config": {
+      "Style": "excited",
+      "Styledegree": "2"
+    }
+  },
+  "WorksheetType": "3",
+  "Qus": [
+    {
+      "Order": 1,
+      "Title": {
+        "Text": "123 + 123",
+        "Config": {
+          "Style": "cheerful",
+          "Styledegree": "1"
+        }
+      },
+      "Settings": {
+        "Number1": 123,
+        "Number2": 123,
+        "Operation": "+"
+      },
+      "NumberOfOptions": 4,
+      "Sct": 3
+    }
+  ]
+}

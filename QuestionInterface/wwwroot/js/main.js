@@ -11,6 +11,26 @@
     document.getElementById("cancel").addEventListener("click", function () {
         document.querySelector(".popupAddQuestion").style.display = "none";
     });
+
+    fetch('/Worksheet/GetWorksheets')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('worksheetContainer');
+            data.forEach(worksheet => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.id = 'backgroundcolor1';
+                button.className = 'MainButtonMenu';
+                button.innerHTML = `
+                    <span class="aboveText" style="font-size: 1.6rem;">${worksheet.WorksheetId}</span>
+                    <br>
+                    <span class="text-nowrap" style="font-size: 1rem;">${worksheet.Qus.length}</span>
+                `;
+                button.onclick = () => goToWorksheetPage(worksheet.WorksheetId);
+                container.appendChild(button);
+            });
+        })
+        .catch(error => console.error('Error fetching worksheets:', error));
 });
 
 let QuestionCounter = 0;
@@ -45,7 +65,7 @@ function addNewQuestion() {
 
     const pElement3 = document.createElement("p");
     pElement3.className = "p1BoarderBlack";
-    pElement3.textContent = "In " +sct +" Seconds" ;
+    pElement3.textContent = "In " + sct + " Seconds";
 
     const imgElement = document.createElement("img");
     imgElement.src = "/gif/icons8-settings.gif";
@@ -57,7 +77,8 @@ function addNewQuestion() {
 
         document.getElementById("Number1").value = num1;
         document.getElementById("Number2").value = num2;
-        document.getElementById('QuestionInterfaceSelctorOperation').value = sct;
+        document.getElementById('QuestionInterfaceSelctorOperation').value = selectedOperation;
+        document.getElementById('Sct').value = sct;
 
         document.querySelector(".popupAddQuestion").style.display = "flex";
     });
@@ -86,8 +107,8 @@ function addNewQuestion() {
         title: {
             text: number1 + " " + selectedOperation + " " + number2,
             config: {
-                style: "cheerful", 
-                styledegree: "1"  // Default value
+                style: "cheerful",
+                styledegree: "1"
             }
         },
         settings: {
@@ -95,8 +116,8 @@ function addNewQuestion() {
             number2: parseInt(number2),
             operation: selectedOperation
         },
-        numberOfOptions: 4, 
-        sct: 5
+        numberOfOptions: 4,
+        sct: sct
     });
 
     function createSpacer() {
@@ -116,34 +137,33 @@ function addNewQuestion() {
     mainDiv.appendChild(createSpacer());
     mainDiv.appendChild(buttonElement);
 
-
     document.getElementById("MainQuestionDivName").appendChild(mainDiv);
 
     document.getElementById("Number1").value = "";
     document.getElementById("Number2").value = "";
-    document.getElementById("Sct").value = "" ; 
+    document.getElementById("Sct").value = "";
 }
 
 function saveData() {
     const formData = {
-        skillId: 100,         // Example static value
-        number: 1,            // Example static value
-        level: 1,             // Example static value
+        skillId: 100,
+        number: 1,
+        level: 1,
         title: {
             text: document.getElementById("Title").value,
             config: {
-                style: "friendly",     // Example static value
-                styledegree: "1"       // Example static value
+                style: "friendly",
+                styledegree: "1"
             }
         },
         finalMessage: {
             text: document.getElementById("FinalMessge").value,
             config: {
-                style: "excited",      // Example static value
-                styledegree: "2"       // Example static value
+                style: "excited",
+                styledegree: "2"
             }
         },
-        worksheetType: "MathOperation2NumRow",  // Example static value
+        worksheetType: document.getElementById('TopicOfQuestions').value,
         qus: questions
     };
 
@@ -164,4 +184,16 @@ function saveData() {
             alert('Error saving data.');
         }
     });
+}
+
+function goToWorksheetPage(id) {
+    window.location.href = '/Worksheet/Details/' + id;
+}
+
+function goToWorksheetList() {
+    window.location.href = '/Worksheet/List';
+}
+
+function goToPage() {
+    window.location.href = '/Subject';
 }

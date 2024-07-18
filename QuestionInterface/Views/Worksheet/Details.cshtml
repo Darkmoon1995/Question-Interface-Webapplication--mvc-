@@ -1,0 +1,40 @@
+﻿@model QuestionInterface.Models.WorksheetModel
+
+@{
+    ViewData["Title"] = "Worksheet Details";
+}
+
+<h1>Worksheet Details</h1>
+
+<h2>Worksheet ID: @Model.WorksheetId</h2>
+<h3>Title: @Model.Title.Text</h3>
+<h3>Final Message: @Model.FinalMessage.Text</h3>
+<h3>Number of Questions: @Model.Qus.Count</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order</th>
+            <th>Title</th>
+            <th>Number1</th>
+            <th>Number2</th>
+            <th>Operation</th>
+            <th>Number of Options</th>
+            <th>Sct</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var question in Model.Qus)
+        {
+            <tr>
+                <td>@question.Order</td>
+                <td>@question.Title.Text</td>
+                <td>@question.Settings.Number1</td>
+                <td>@question.Settings.Number2</td>
+                <td>@question.Settings.Operation</td>
+                <td>@question.NumberOfOptions</td>
+                <td>@question.Sct</td>
+            </tr>
+        }
+    </tbody>
+</table>

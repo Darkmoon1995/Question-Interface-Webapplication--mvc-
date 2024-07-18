@@ -8,6 +8,8 @@ namespace QuestionInterface.Controllers
 {
     public class QuestionsController : Controller
     {
+        private readonly string _maxIdFilePath = @"D:\#C\Web APlication mvvm\QuestionInterface\QuestionInterfaceSolution\QuestionInterface\wwwroot\js\JsonFormatWorkSheets\maxId.txt";
+
         public IActionResult Index()
         {
             return View();
@@ -18,7 +20,9 @@ namespace QuestionInterface.Controllers
         {
             try
             {
-                model.WorksheetId = new Random().Next(100000, 999999);  // Generate a unique WorksheetId
+                int newWorksheetId = GetNextWorksheetId();
+                model.WorksheetId = newWorksheetId;
+
                 string json = JsonConvert.SerializeObject(model, Formatting.Indented);
                 string fileName = $"{model.WorksheetId}.json";
                 string directoryPath = @"D:\#C\Web APlication mvvm\QuestionInterface\QuestionInterfaceSolution\QuestionInterface\wwwroot\js\JsonFormatWorkSheets";
@@ -41,6 +45,29 @@ namespace QuestionInterface.Controllers
                 Console.WriteLine("Error: " + ex.Message);
                 return Json(new { success = false, message = ex.Message });
             }
+        }
+
+        private int GetNextWorksheetId()
+        {
+            int currentMaxId = 0;
+
+            // Read the current maximum ID from the file
+            if (System.IO.File.Exists(_maxIdFilePath))
+            {
+                string currentMaxIdString = System.IO.File.ReadAllText(_maxIdFilePath);
+                if (int.TryParse(currentMaxIdString, out int parsedMaxId))
+                {
+                    currentMaxId = parsedMaxId;
+                }
+            }
+
+            // Increment the current maximum ID
+            int newMaxId = currentMaxId + 1;
+
+            // Write the new maximum ID back to the file
+            System.IO.File.WriteAllText(_maxIdFilePath, newMaxId.ToString());
+
+            return newMaxId;
         }
     }
 }

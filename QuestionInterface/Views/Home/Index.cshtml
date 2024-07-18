@@ -1,32 +1,39 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
 <div class="container mt-4">
     <div class="box">
         <div class="outer">
             <div class="inner">
-                <button onclick="goToPage()" type="button" id="backgroundcolor1" class="MainButtonMenu">
-                    <span class="aboveText" style="font-size: 1.6rem;">Grade 1</span>
+                <button type="button" id="backgroundcolor1" class="MainButtonMenu" onclick="goToWorksheetList()">
+                    <span class="aboveText" style="font-size: 1.6rem;">Math</span>
                     <br>
-                    <span class="text-nowrap" style="font-size: 1rem;">Subejcts: math, Sciense ...</span>
+                    <span class="text-nowrap" style="font-size: 1rem;">Questions: 13</span>
                 </button>
             </div>
             <div class="inner">
-                <button type="button" id="backgroundcolor2" href="/Subject" class="MainButtonMenu">
-                    <span class="aboveText" style="font-size: 1.6rem;">Grade 2</span>
+                <button type="button" id="backgroundcolor2" class="MainButtonMenu">
+                    <span class="aboveText" style="font-size: 1.6rem;">Science</span>
                     <br>
-                    <span class="text-nowrap" style="font-size: 1rem;">Subejcts: math, Sciense ...</span>
+                    <span class="text-nowrap" style="font-size: 1rem;">Subjects: Math, Science ...</span>
                 </button>
             </div>
-
             <div class="inner">
-                <button type="button" id="backgroundcolor3" href="/Subject" class="MainButtonMenu">
-                    <span class="aboveText" style="font-size: 1.6rem;">Grade 3</span>
+                <button type="button" id="backgroundcolor3" class="MainButtonMenu">
+                    <span class="aboveText" style="font-size: 1.6rem;">Geography</span>
                     <br>
-                    <span class="text-nowrap" style="font-size: 1rem;">Subejcts: math, Sciense ...</span>
+                    <span class="text-nowrap" style="font-size: 1rem;">Subjects: Math, Science ...</span>
                 </button>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+
+
+    function goToPage() {
+        // Your existing goToPage function logic here
+        window.location.href = '/Subject';
+    }
+</script>
